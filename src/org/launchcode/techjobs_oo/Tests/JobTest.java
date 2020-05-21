@@ -24,7 +24,7 @@ public class JobTest {
     public void testJobConstructorSetsAllFields() {
         Job job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         assertTrue(job3 instanceof Job);
-        assertEquals(job3.getName(), "Product tester");
+        assertEquals("Product tester", job3.getName());
     }
 
     @Test
@@ -32,5 +32,12 @@ public class JobTest {
         Job job4 = new Job("Sandwich Artist", new Employer("Subway"), new Location("Mars"), new PositionType("Customer Service"), new CoreCompetency("Personable"));
         Job job5 = new Job("Sandwich Artist", new Employer("Subway"), new Location("Mars"), new PositionType("Customer Service"), new CoreCompetency("Personable"));
         assertNotSame(job4, job5);
+    }
+
+    @Test
+    public void testForBlankLineBeforeAndAfter() {
+        Job job6 = new Job();
+        String job = job6.toString();
+        assertTrue(job.contains("\n" + "\n"));
     }
 }

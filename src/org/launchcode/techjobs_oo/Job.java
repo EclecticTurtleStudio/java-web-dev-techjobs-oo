@@ -44,6 +44,10 @@ public class Job {
         return java.util.Objects.hash(super.hashCode(), id);
     }
 
+    public String toString() {
+        return "\n" + "\n";
+    }
+
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
@@ -91,4 +95,6 @@ public class Job {
     public int getId() {
         return id;
     }
+
+
 }
