@@ -1,5 +1,7 @@
 package org.launchcode.techjobs_oo;
 
+import java.lang.reflect.Field;
+
 public class Job {
 
     private int id;
@@ -44,8 +46,31 @@ public class Job {
         return java.util.Objects.hash(super.hashCode(), id);
     }
 
+    @Override
     public String toString() {
-        return "\n" + "\n";
+
+        if (name.isEmpty()) {
+            setName("Data not available");
+        }
+        if (employer.toString().isEmpty()) {
+            this.employer.setValue("Data not available");
+        }
+        if (location.toString().isEmpty()) {
+            this.location.setValue("Data not available");
+        }
+        if (positionType.toString().isEmpty()) {
+            this.positionType.setValue("Data not available");
+        }
+        if (coreCompetency.toString().isEmpty()) {
+            this.coreCompetency.setValue("Data not available");
+        }
+
+        return "\nID:" + id +
+                "\nName:'" + name + '\'' +
+                "\nEmployer:" + employer +
+                "\nLocation:" + location +
+                "\nPosition Type:" + positionType +
+                "\nCore Competency:" + coreCompetency + "\n";
     }
 
 
@@ -53,6 +78,7 @@ public class Job {
     //  and id.
 
     public String getName() {
+
         return name;
     }
 
