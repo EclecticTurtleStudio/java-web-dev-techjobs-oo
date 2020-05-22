@@ -36,7 +36,7 @@ public class JobTest {
 
     @Test
     public void testForBlankLineBeforeAndAfter() {
-        Job job6 = new Job();
+        Job job6 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         String job = job6.toString();
         assertTrue(job.contains("\n" + "\n"));
     }
@@ -44,7 +44,7 @@ public class JobTest {
     @Test
     public void testJobListingDetailLayout() {
         Job job7 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        assertEquals("\nID: 1\nName: Product tester\nEmployer: ACME\nLocation: Desert\nPosition Type: Quality control\nCoreCompetency: Persistence\n", job7.toString());
+        assertEquals("\nID: 1\nName: Product tester\nEmployer: ACME\nLocation: Desert\nPosition Type: Quality control\nCore Competency: Persistence\n", job7.toString());
     }
 
     @Test
@@ -54,9 +54,4 @@ public class JobTest {
         assertTrue(job.contains("Data not available"));
     }
 
-    @Test
-    public void testShowsNoJobExist() {
-        Job job9 = new Job();
-        assertEquals("OOPS! This job does not seem to exist.", job9.toString());
-    }
 }

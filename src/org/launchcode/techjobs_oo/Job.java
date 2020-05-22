@@ -1,7 +1,5 @@
 package org.launchcode.techjobs_oo;
 
-import java.lang.reflect.Field;
-
 public class Job {
 
     private int id;
@@ -50,27 +48,22 @@ public class Job {
     public String toString() {
 
         if (name.isEmpty()) {
-            setName("Data not available");
+            this.name = "Data not available";
         }
-        if (employer.toString().isEmpty()) {
+        if (employer.getValue().isEmpty()) {
             this.employer.setValue("Data not available");
         }
-        if (location.toString().isEmpty()) {
+        if (location.getValue().isEmpty()) {
             this.location.setValue("Data not available");
         }
-        if (positionType.toString().isEmpty()) {
+        if (positionType.getValue().isEmpty()) {
             this.positionType.setValue("Data not available");
         }
-        if (coreCompetency.toString().isEmpty()) {
+        if (coreCompetency.getValue().isEmpty()) {
             this.coreCompetency.setValue("Data not available");
         }
 
-        return "\nID:" + id +
-                "\nName:'" + name + '\'' +
-                "\nEmployer:" + employer +
-                "\nLocation:" + location +
-                "\nPosition Type:" + positionType +
-                "\nCore Competency:" + coreCompetency + "\n";
+        return "\nID: " + id + "\nName: " + name + "\nEmployer: " + employer + "\nLocation: " + location + "\nPosition Type: " + positionType + "\nCore Competency: " + coreCompetency + "\n";
     }
 
 
