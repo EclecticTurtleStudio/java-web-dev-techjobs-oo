@@ -8,6 +8,21 @@ import static org.junit.Assert.*;
 
 public class JobTest {
 
+    Job job1;
+    Job job2;
+    Job job3;
+    Job job4;
+    Job job5;
+
+    @Before
+    public void createJobs() {
+        job1 = new Job();
+        job2 = new Job();
+        job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        job4 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        job5 = new Job("Product tester", new Employer(""), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+    }
+
     @Test
     public void emptyTest(){
         assertEquals(10,10,.001);
@@ -15,42 +30,36 @@ public class JobTest {
 
     @Test
     public void testSettingJobId() {
-        Job job1 = new Job();
-        Job job2 = new Job();
         assertEquals(1, (job2.getId() - job1.getId()));
     }
 
     @Test
     public void testJobConstructorSetsAllFields() {
-        Job job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        assertTrue(job3 instanceof Job);
+        assertNotNull(job3);
         assertEquals("Product tester", job3.getName());
+        assertEquals("ACME", job3.getEmployer().getValue());
+        assertEquals("Desert", job3.getLocation().getValue());
     }
 
     @Test
     public void testJobsForEquality() {
-        Job job4 = new Job("Sandwich Artist", new Employer("Subway"), new Location("Mars"), new PositionType("Customer Service"), new CoreCompetency("Personable"));
-        Job job5 = new Job("Sandwich Artist", new Employer("Subway"), new Location("Mars"), new PositionType("Customer Service"), new CoreCompetency("Personable"));
-        assertNotSame(job4, job5);
+        assertNotSame(job3, job4);
     }
 
     @Test
     public void testForBlankLineBeforeAndAfter() {
-        Job job6 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        String job = job6.toString();
-        assertTrue(job.contains("\n" + "\n"));
+        String job = job3.toString();
+        assertTrue(job.contains("\n"));
     }
 
     @Test
     public void testJobListingDetailLayout() {
-        Job job7 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        assertEquals("\nID: 1\nName: Product tester\nEmployer: ACME\nLocation: Desert\nPosition Type: Quality control\nCore Competency: Persistence\n", job7.toString());
+        assertEquals("\nID: 3\nName: Product tester\nEmployer: ACME\nLocation: Desert\nPosition Type: Quality control\nCore Competency: Persistence\n", job3.toString());
     }
 
     @Test
     public void testShowsDataNotAvailable() {
-        Job job8 = new Job("Product tester", new Employer(""), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        String job = job8.toString();
+        String job = job5.toString();
         assertTrue(job.contains("Data not available"));
     }
 
